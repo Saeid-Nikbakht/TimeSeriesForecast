@@ -5,12 +5,12 @@
         "isLabel": true,
         "data_sources": {
           "TB_info": {
-            "tb_url": "https://cloud2.koena-tec.com",
+            "tb_url": "------------------",
             "tb_auth": {
-              "user": "prod_dev@koena-tec.com",
-              "password": "prodDev@koena123"
+              "user": "------------------",
+              "password": "------------------"
             },
-            "entity_id": "3154a3f1-553d-11ed-a722-ef31b9e22335",
+            "entity_id": "------------------",
             "data_key": "Ea_cum"
           },
           "local_directory": "datasets/Prod_real.csv"
@@ -33,7 +33,7 @@
         },
         "scaler_dict": {
           "scaler_type": "standard",
-          "scaler_path": "Assets/HarrerTest3/Scalers/"
+          "scaler_path": "Assets/TestProject/Scalers/"
         }
       },
       "pv_sim": {
@@ -41,12 +41,12 @@
         "isLabel": false,
         "data_sources": {
           "TB_info": {
-            "tb_url": "https://cloud.koena-tec.com",
+            "tb_url": "------------------",
             "tb_auth": {
-              "user": "auriga_dev@koena-tec.com",
-              "password": "aurigadev//%2b"
+              "user": "------------------",
+              "password": "------------------"
             },
-            "entity_id": "19e16320-7f86-11ed-8d4a-13b999f3e44c",
+            "entity_id": "------------------",
             "data_key": "Ea_sim_1min"
           },
           "local_directory": "datasets/Prod_real.csv"
@@ -69,17 +69,17 @@
         },
         "scaler_dict": {
           "scaler_type": "standard",
-          "scaler_path": "Assets/HarrerTest3/Scalers/"
+          "scaler_path": "Assets/TestProject/Scalers/"
         }
       }
     },
     "model_data": {
-      "model_version":5,
+      "model_version":7,
       "pretrained_model_directory": "",
       "initializer_dict": {
         "past_steps": 64,
         "future_steps": 16,
-        "model_name": "Harrer_standard_var6_p64_f16_v5"
+        "model_name": "TestProject_standard_var2_p64_f16_v5"
       },
       "compiler_dict": {
         "metrics": [
@@ -92,19 +92,19 @@
       "callbacks_dict": {
         "monitoring_metric": "val_loss",
         "patience": 4,
-        "model_path": "Assets/HarrerTest3/Models/",
+        "model_path": "Assets/TestProject/Models/",
         "callback_verbose": 2
       },
       "trainer_dict": {
         "batch_size": 32,
-        "epochs": 1,
+        "epochs": 50,
         "validation_split": 0.15,
         "training_verbose": 2
       },
       "data_saver_dict":{
-        "history_path":"Assets/HarrerTest3/History/",
-        "clean_data_path":"Assets/HarrerTest3/Clean_data/",
-        "test_data_path":"Assets/HarrerTest3/test_data/"
+        "history_path":"Assets/TestProject/History/",
+        "clean_data_path":"Assets/TestProject/Clean_data/",
+        "test_data_path":"Assets/TestProject/test_data/"
       }
     }
   }
