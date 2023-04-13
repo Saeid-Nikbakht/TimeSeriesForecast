@@ -35,8 +35,17 @@ The Visual documentation of the code can be found as below:
 <img width="15678" alt="Visual Doku TimeSeries" src="https://user-images.githubusercontent.com/63426379/231884127-8c8622ed-ba15-4c58-8d28-0b2ab494921e.png">
 
 
+# Results
+As an example verious models are compared to each other and shown in the following GIF (It takes a little time!):
+
+https://user-images.githubusercontent.com/63426379/231889049-2ffbd8a8-b325-423f-8342-b65a9d3a932c.mp4
+
+
 # Credits
 This code is developed by Saeid Nikbakht Nikabadi.
+
+
+
 
 
 
