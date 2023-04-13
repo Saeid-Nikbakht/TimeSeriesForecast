@@ -31,7 +31,8 @@ The results which are saved are as follows:
 
 # Scripts and Roadmap
 The Visual documentation of the code can be found as below:
-<img width="16384" alt="Visual Code Doku" src="https://user-images.githubusercontent.com/63426379/231882731-cccf9cd5-b5ab-4e76-96a2-c86659406e4b.png">
+
+<img width="15678" alt="Visual Doku TimeSeries" src="https://user-images.githubusercontent.com/63426379/231884127-8c8622ed-ba15-4c58-8d28-0b2ab494921e.png">
 
 
 # Credits
