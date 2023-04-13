@@ -1,0 +1,110 @@
+{
+    "input_data": {
+      "pv_real": {
+        "data_storage": "CSV",
+        "isLabel": true,
+        "data_sources": {
+          "TB_info": {
+            "tb_url": "https://cloud2.koena-tec.com",
+            "tb_auth": {
+              "user": "prod_dev@koena-tec.com",
+              "password": "prodDev@koena123"
+            },
+            "entity_id": "3154a3f1-553d-11ed-a722-ef31b9e22335",
+            "data_key": "Ea_cum"
+          },
+          "local_directory": "datasets/Prod_real.csv"
+        },
+        "cleaner_dict": {
+          "value_type": "cum",
+          "resolution": "15min",
+          "column_name": "pv_real",
+          "max_anomoly_margin": 99.9,
+          "min_anomoly_margin": 0.01,
+          "agg_func":"sum",
+          "hours_modifier":0
+        },
+        "splitter_dict": {
+          "past_steps": 64,
+          "future_steps": 16,
+          "test_size": 0.15,
+          "random_state": 42,
+          "shuffle_flag": true
+        },
+        "scaler_dict": {
+          "scaler_type": "standard",
+          "scaler_path": "Assets/HarrerTest3/Scalers/"
+        }
+      },
+      "pv_sim": {
+        "data_storage": "CSV",
+        "isLabel": false,
+        "data_sources": {
+          "TB_info": {
+            "tb_url": "https://cloud.koena-tec.com",
+            "tb_auth": {
+              "user": "auriga_dev@koena-tec.com",
+              "password": "aurigadev//%2b"
+            },
+            "entity_id": "19e16320-7f86-11ed-8d4a-13b999f3e44c",
+            "data_key": "Ea_sim_1min"
+          },
+          "local_directory": "datasets/Prod_real.csv"
+        },
+        "cleaner_dict": {
+          "value_type": "abs",
+          "resolution": "15min",
+          "column_name": "pv_sim",
+          "max_anomoly_margin": 99.9,
+          "min_anomoly_margin": 0.01,
+          "agg_func":"sum",
+          "hours_modifier":0
+        },
+        "splitter_dict": {
+          "past_steps": 64,
+          "future_steps": 16,
+          "test_size": 0.15,
+          "random_state": 42,
+          "shuffle_flag": true
+        },
+        "scaler_dict": {
+          "scaler_type": "standard",
+          "scaler_path": "Assets/HarrerTest3/Scalers/"
+        }
+      }
+    },
+    "model_data": {
+      "model_version":5,
+      "pretrained_model_directory": "",
+      "initializer_dict": {
+        "past_steps": 64,
+        "future_steps": 16,
+        "model_name": "Harrer_standard_var6_p64_f16_v5"
+      },
+      "compiler_dict": {
+        "metrics": [
+          "mean_absolute_error"
+        ],
+        "loss": "mean_squared_error",
+        "optimizer": "adam",
+        "num_features" :2
+      },
+      "callbacks_dict": {
+        "monitoring_metric": "val_loss",
+        "patience": 4,
+        "model_path": "Assets/HarrerTest3/Models/",
+        "callback_verbose": 2
+      },
+      "trainer_dict": {
+        "batch_size": 32,
+        "epochs": 1,
+        "validation_split": 0.15,
+        "training_verbose": 2
+      },
+      "data_saver_dict":{
+        "history_path":"Assets/HarrerTest3/History/",
+        "clean_data_path":"Assets/HarrerTest3/Clean_data/",
+        "test_data_path":"Assets/HarrerTest3/test_data/"
+      }
+    }
+  }

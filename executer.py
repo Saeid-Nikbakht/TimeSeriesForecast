@@ -13,9 +13,9 @@ import numpy as np
 import pandas as pd
 import pickle
 from tensorflow.keras.models import load_model
-from tensorflow.keras.utils import plot_model
+# from tensorflow.keras.utils import plot_model
 from datetime import datetime, timedelta
-from TBDatabaseConnector import TBDatabaseConnector
+# from TBDatabaseConnector import TBDatabaseConnector
 import os
 import json
 
@@ -65,8 +65,8 @@ class Executer:
     
     
     def get_preprocessed_data_individual(self, clean_data_resampled, splitter_dict, scaler_dict):
-        data_preprocessor = DataPreprocessor(clean_data_resampled, splitter_dict)
-        X_train_scaled_3d, X_test_scaled_3d, y_train, y_test = data_preprocessor.train_test_provider(scaler_dict)
+        data_preprocessor = DataPreprocessor(clean_data_resampled, splitter_dict, scaler_dict)
+        X_train_scaled_3d, X_test_scaled_3d, y_train, y_test = data_preprocessor.run_data_preprocessor()
         return X_train_scaled_3d, X_test_scaled_3d, y_train, y_test
     
     
@@ -133,17 +133,17 @@ class Executer:
         trained_model, history = model_trainer.train_model(X_train_total, y_train)
         
         # saving the model plot
-        model_path = callbacks_dict["model_path"]
-        model_name = trained_model.name
-        plot_model(
-            trained_model,
-            to_file = model_path + model_name + '.jpg',
-            show_shapes=True,
-            show_layer_names=True,
-            rankdir='TB',
-            expand_nested=True,
-            dpi=100,
-        )
+        # model_path = callbacks_dict["model_path"]
+        # model_name = trained_model.name
+        # plot_model(
+        #     trained_model,
+        #     to_file = model_path + model_name + '.jpg',
+        #     show_shapes=True,
+        #     show_layer_names=True,
+        #     rankdir='TB',
+        #     expand_nested=True,
+        #     dpi=100,
+        # )
         return trained_model, history
     
     def create_repo_if_not_exist(self, path):
@@ -190,14 +190,14 @@ class Executer:
         
         return trained_model, history, X_test_total, y_test, clean_data_total_df
 
-        
+
 # testing the executer
 if __name__ == "__main__":
     
     end_dt = datetime.now()
     start_dt = end_dt - timedelta(days = 600)
     
-    with open("Assets\HarrerTest3\MLConf\MLConf_test3.json", "r") as json_file:
+    with open("MLConf_test7.json", "r") as json_file:
         MLConf = json.load(json_file)
     executer = Executer(MLConf, start_dt, end_dt)
     trained_model, history, X_test_total, y_test, clean_data_total_df = executer.execute_ml()
