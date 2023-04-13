@@ -1,0 +1,110 @@
+{
+    "input_data": {
+      "pv_real": {
+        "data_storage": "CSV",
+        "isLabel": true,
+        "data_sources": {
+          "TB_info": {
+            "tb_url": "------------------",
+            "tb_auth": {
+              "user": "------------------",
+              "password": "------------------"
+            },
+            "entity_id": "------------------",
+            "data_key": "Ea_cum"
+          },
+          "local_directory": "datasets/Prod_real.csv"
+        },
+        "cleaner_dict": {
+          "value_type": "cum",
+          "resolution": "15min",
+          "column_name": "pv_real",
+          "max_anomoly_margin": 99.9,
+          "min_anomoly_margin": 0.01,
+          "agg_func":"sum",
+          "hours_modifier":0
+        },
+        "splitter_dict": {
+          "past_steps": 64,
+          "future_steps": 16,
+          "test_size": 0.15,
+          "random_state": 42,
+          "shuffle_flag": true
+        },
+        "scaler_dict": {
+          "scaler_type": "standard",
+          "scaler_path": "Assets/TestProject/Scalers/"
+        }
+      },
+      "pv_sim": {
+        "data_storage": "CSV",
+        "isLabel": false,
+        "data_sources": {
+          "TB_info": {
+            "tb_url": "------------------",
+            "tb_auth": {
+              "user": "------------------",
+              "password": "------------------"
+            },
+            "entity_id": "------------------",
+            "data_key": "Ea_sim_1min"
+          },
+          "local_directory": "datasets/Prod_real.csv"
+        },
+        "cleaner_dict": {
+          "value_type": "abs",
+          "resolution": "15min",
+          "column_name": "pv_sim",
+          "max_anomoly_margin": 99.9,
+          "min_anomoly_margin": 0.01,
+          "agg_func":"sum",
+          "hours_modifier":0
+        },
+        "splitter_dict": {
+          "past_steps": 64,
+          "future_steps": 16,
+          "test_size": 0.15,
+          "random_state": 42,
+          "shuffle_flag": true
+        },
+        "scaler_dict": {
+          "scaler_type": "standard",
+          "scaler_path": "Assets/TestProject/Scalers/"
+        }
+      }
+    },
+    "model_data": {
+      "model_version":7,
+      "pretrained_model_directory": "",
+      "initializer_dict": {
+        "past_steps": 64,
+        "future_steps": 16,
+        "model_name": "TestProject_standard_var2_p64_f16_v5"
+      },
+      "compiler_dict": {
+        "metrics": [
+          "mean_absolute_error"
+        ],
+        "loss": "mean_squared_error",
+        "optimizer": "adam",
+        "num_features" :2
+      },
+      "callbacks_dict": {
+        "monitoring_metric": "val_loss",
+        "patience": 4,
+        "model_path": "Assets/TestProject/Models/",
+        "callback_verbose": 2
+      },
+      "trainer_dict": {
+        "batch_size": 32,
+        "epochs": 50,
+        "validation_split": 0.15,
+        "training_verbose": 2
+      },
+      "data_saver_dict":{
+        "history_path":"Assets/TestProject/History/",
+        "clean_data_path":"Assets/TestProject/Clean_data/",
+        "test_data_path":"Assets/TestProject/test_data/"
+      }
+    }
+  }
