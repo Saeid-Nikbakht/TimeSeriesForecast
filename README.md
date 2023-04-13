@@ -31,6 +31,7 @@ The results which are saved are as follows:
 
 # Scripts and Roadmap
 The Visual documentation of the code can be found as below:
+<img width="16384" alt="Visual Code Doku" src="https://user-images.githubusercontent.com/63426379/231882731-cccf9cd5-b5ab-4e76-96a2-c86659406e4b.png">
 
 
 # Credits
